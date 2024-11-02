@@ -2,3 +2,8 @@ ipykernel==6.29.5
 beautifulsoup4==4.12.3
 pandas==2.2.3
 selenium==4.25.0
+vertexai==1.70.0
+google-auth==2.35.0
+google-cloud-aiplatform==1.70.0
+neo4j==5.26.0
+SQLAlchemy==2.0.36

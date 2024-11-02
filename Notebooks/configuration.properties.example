@@ -1,0 +1,14 @@
+[VertexAI]
+project = <test>
+model_id = <test>
+endpoint_id = <test>
+location = <test>
+api_endpoint = <test>
+model_pretrained = <test>
+
+
+[Neo4j]
+uri = <test>
+user = <test>
+password = <test>
+db_name = <test>
