@@ -1,2 +1,4 @@
 logs/*
 
+GCPKey_airflow.json
+.env
