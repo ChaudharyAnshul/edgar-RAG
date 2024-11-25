@@ -55,11 +55,16 @@ x-airflow-common:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-airflow}:${POSTGRES_PASSWORD:-airflow}@postgres/${POSTGRES_DB:-airflow}
-    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER:-airflow}:${POSTGRES_PASSWORD:-airflow}@postgres/${POSTGRES_DB:-airflow}
-    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
-    AIRFLOW__CORE__FERNET_KEY: ''
-    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__FERNET_KEY: ${_AIRFLOW__CORE__FERNET_KEY:-test123452}
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__DAG_CONCURRENCY: ${_AIRFLOW_CORE_DAG_CONCURRENCY:-16}
+    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER:-airflow}:${POSTGRES_PASSWORD:-airflow}@postgres/${POSTGRES_DB:-airflow}
+    AIRFLOW__CELERY__WORKER_CONCURRENCY: ${_AIRFLOW_CELERY_WORKER_CONCURRENCY:-8}
+    AIRFLOW__WEBSERVER__SECRET_KEY: ${_AIRFLOW__WEBSERVER__SECRET_KEY:-test123452}
+    AIRFLOW__WEBSERVER__AUTH_BACKEND: airflow.api.auth.backend.default
+    AIRFLOW__LOGGING__LOGGING_LEVEL: "INFO"
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
     # yamllint disable rule:line-length
     # Use simple http server on scheduler for health checks
